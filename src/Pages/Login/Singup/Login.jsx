@@ -153,6 +153,10 @@ const Login = () => {
                            Sign In
                         </button>
 
+                       
+                        
+                        </form>
+                        <div className="  w-96 space-y-4 rounded-lg p-4  sm:p-6 lg:p-8" >
                         <div  className="">
                             <button onClick={handlegoogle} className="btn mb-3 btn-outline w-full hover:bg-[#ee626b]"> <AiOutlineGoogle></AiOutlineGoogle>Login with Google</button>
                             <button onClick={handlegithub} className="btn btn-outline w-full hover:bg-[#ee626b]">  <DiGithubBadge></DiGithubBadge>Login with Github</button>
@@ -162,8 +166,9 @@ const Login = () => {
                             No account?
                             <Link className=" pl-1 text-xl font-bold text-red-400" to={"/singup"}> SING UP</Link>
                         </p>
+
+                        </div>
                         <ToastContainer></ToastContainer>
-                        </form>
                    
                </div>
                          

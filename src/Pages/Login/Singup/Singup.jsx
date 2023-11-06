@@ -104,8 +104,9 @@ const Singup = () => {
                             <input
                             type="text"
                             className="w-full rounded-lg border-gray-200 p-4 mb-4 pe-12 text-sm shadow-sm hover:shadow-md"
-                            placeholder="Profile image... " required name="image"
+                            placeholder="Profile image link... " required name="image"
                         />
+                       
 
                         {/* email section */}
                         <label htmlFor="email" className="sr-only">Email</label>
