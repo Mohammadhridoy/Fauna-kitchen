@@ -1,7 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import  logo  from '../../assets/fauna (3)_prev_ui.png'
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+    const {user, logOut} =useContext(AuthContext)
+
+    const handlelogOut =() =>{
+        logOut()
+    }
 
     return (
         <div>
@@ -95,21 +102,37 @@ const Navbar = () => {
 
                 {/* md and lg device button */}
                 <div className="navbar-end">
-                {/* {  
+                {  
                     user ?   <div className="flex">
-                        <div className=" mr-3 flex items-center gap-3 text-[16px] text-black  font-semibold">
-                            <div className="border-black border-2 rounded-full"> 
-                                <img className="w-6 md:w-12  rounded-full" src={user.photoURL} alt="photo" />
+                        <div className="dropdown dropdown-end pr-4">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
+                            <div className="w-10 rounded-full">
+                            <img src={user.photoURL} />
                             </div>
-                            
+                        </label>
+                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar online  ml-[72px] m-3">
+                            <div className="w-16 mx-auto rounded-full">
+                            <img src={user.photoURL} />
+                            </div>
+                        </label>
+                        <li className="text-center pb-2">{user.displayName}</li>
+                         
+                        <li> <Link to={'/'}  >My added food</Link></li>
+                         <li>  <Link to={'/'}> Add a food</Link> </li>
+                         <li>  <Link to={'/'}> My ordered food </Link> </li>
+                           
+                           
+                         
+                        </ul>
                         </div>
                         <button onClick={handlelogOut} className="btn px-2 lg:px-4 bg-[#ee626b] border-none text-white hover:bg-[#46d993] shadow-md ">Sign Out</button>
                 </div>
                 : <div className="">
                     <Link to={"/login"} >
-                    <button className="btn px-5 md:px-5 bg-[#ee626b] border-none text-white hover:bg-[#46D993] md:shadow-md text-xs lg:text-[16px] ">Login</button>
+                    <button className="btn px-5 md:px-5 bg-[#ee626b] border-none text-white hover:bg-[#46D993] md:shadow-md text-xs lg:text-[16px] ">Sign In</button>
                     </Link>
-                </div>  } */}
+                </div>  }
 
 
                     
