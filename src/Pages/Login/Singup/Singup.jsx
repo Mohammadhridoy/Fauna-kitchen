@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import auth from '../../Firebase/Firebase';
 import { updateProfile } from 'firebase/auth';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Singup = () => {
 
@@ -24,14 +25,14 @@ const Singup = () => {
       console.log(name, email, photo, password, accept)
 
      if(!/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)){
-        toast("Invalid Passsword !",{
-            position:"bottom-right",
+        toast.warning("Invalid Passsword !",{
+            position:"top-right",
             autoClose:2000,
         })
         return
       }
       else if(!accept){
-        toast("Please accept our Tearm and Condition",{
+        toast.warning("Please accept our Tearm and Condition",{
             position:"bottom-right",
             autoClose:2000,
         })
@@ -195,7 +196,7 @@ const Singup = () => {
                     <Link className=" pl-36 lg:pl-32 pt-3 text-xl font-semibold text-red-400  " to={"/login"}>LOGIN</Link>
                     </div>
                
-                    < ToastContainer></ToastContainer>
+                   
 
                     </form>
                    
@@ -204,6 +205,7 @@ const Singup = () => {
               
 
             </div>
+            
 
             {/* right side svg and imag  */}
             <div className='hidden lg:flex flex-1'>
@@ -220,7 +222,10 @@ const Singup = () => {
 
             
         </div>
+        < ToastContainer></ToastContainer>
         </div>
+       
+      
      
     );
 };
