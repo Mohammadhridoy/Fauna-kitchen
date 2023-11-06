@@ -44,8 +44,10 @@ const Footer = () => {
                     <p
                     className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left"
                     >
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-                    consequuntur amet culpa cum itaque neque.
+                   #2 of 689 Restaurants in Dhaka City
+                   <br />
+                    Phone: +880 1313-709099 <br></br>
+                    E-mail: fauna@gmail.com
                     </p>
                                     {/* social section  */}
                 
