@@ -23,15 +23,15 @@ const AddFood = () => {
         const country  = form.origin.value
         
 
-        const foodItem = { username,useremail, foodname, category, quantity, image, price, description, country, count:0 }
-        console.log(foodItem)
+        const foodItemList = { username,useremail, foodname, category, quantity, image, price, description, country, count:0 }
+        console.log(foodItemList)
 
-        fetch('https://carguru-server-site.vercel.app/products', {
+        fetch('http://localhost:5000/addfood', {
             method:"POST",
             headers:{
               'content-type':'application/json'
             },
-            body: JSON.stringify(foodItem)
+            body: JSON.stringify(foodItemList)
           })
           .then(res=>res.json())
           .then(data => {
@@ -39,7 +39,7 @@ const AddFood = () => {
             if(data.insertedId){
                 Swal.fire({
                     title: 'Success!',
-                    text: ' product Added successfully ',
+                    text: ' Food Added successfully ',
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })

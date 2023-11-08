@@ -7,6 +7,7 @@ import Blog from "../Blog/Blog";
 import Singup from "../Login/Singup/Singup";
 import AddFood from "../AddFood/AddFood";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import SingleFood from "../AllFood/SingleFood/SingleFood";
 
 
 const MyRoute = createBrowserRouter([
@@ -21,7 +22,12 @@ const MyRoute = createBrowserRouter([
             },
             {
                 path:'allfood',
-                element:<AllFood></AllFood>
+                element:<AllFood></AllFood>,
+                loader: () => fetch('http://localhost:5000/addfood')
+            },
+            {
+                path:'singlefood',
+                element: <SingleFood></SingleFood>
             },
             {
                 path:'blog',
