@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Purchase = () => {
@@ -10,9 +12,64 @@ const Purchase = () => {
 
     const {user} = useContext(AuthContext)
 
-    const  { foodname,  price, quantity }= purchaseInfo || { }
+    const  { foodname,  price, quantity, useremail }= purchaseInfo || { }
 
-    const handlePurchase = () =>{
+    const handlePurchase = (e) =>{
+        e.preventDefault()
+        const form = e.target
+
+        const userNeedquantity = form.userquantity.value
+        const date = form.date.value;
+        const userName = user?.displayName
+        const userEmail = user?.email
+
+        
+
+        const purchasedate ={foodname, price, userNeedquantity,userName, userEmail, date    }
+       
+
+        if(quantity === 0){
+            toast.warning("no available food!",{
+                position:"top-right",
+                autoClose:2000,
+            })
+            return
+        }else if( quantity < userNeedquantity ){
+            toast.warning("you can't buy food!",{
+                position:"top-right",
+                autoClose:2000,
+            })
+            return
+        }else if(useremail === userEmail){
+            toast.warning("you can't buy food. you are admin!",{
+                position:"top-right",
+                autoClose: 2000,
+            })
+            return
+        }
+        console.log(purchasedate)
+
+
+        // fetch('http://localhost:5000/addfood', {
+        //     method:"POST",
+        //     headers:{
+        //       'content-type':'application/json'
+        //     },
+        //     body: JSON.stringify(foodItemList)
+        //   })
+        //   .then(res=>res.json())
+        //   .then(data => {
+        //     console.log(data)
+        //     if(data.insertedId){
+        //         Swal.fire({
+        //             title: 'Success!',
+        //             text: ' Food purchase successfully ',
+        //             icon: 'success',
+        //             confirmButtonText: 'OK'
+        //           })
+        //       form.reset()
+        //     }
+        //   })
 
     }
 
@@ -111,7 +168,7 @@ const Purchase = () => {
                         <input
                         type="text"
                         id="Name"
-                        name="quantity"
+                        name="userquantity"
                         className="mt-1 lg:w-full  rounded-md  bg-white text-sm text-gray-700  p-2  border border-red-400  shadow-md"
                         />
                     </div>
@@ -141,6 +198,7 @@ const Purchase = () => {
                        
                     </div>
                     </form>
+                    < ToastContainer></ToastContainer>
             
         </div>
     );
