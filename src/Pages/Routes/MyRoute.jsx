@@ -8,6 +8,7 @@ import Singup from "../Login/Singup/Singup";
 import AddFood from "../AddFood/AddFood";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import SingleFood from "../AllFood/SingleFood/SingleFood";
+import Purchase from "../AllFood/Purchase";
 
 
 const MyRoute = createBrowserRouter([
@@ -28,6 +29,11 @@ const MyRoute = createBrowserRouter([
             {
                 path:'singlefood/:id',
                 element: <SingleFood></SingleFood>,
+                loader: ({params}) => fetch(`http://localhost:5000/addfood/${params.id}`)
+            },
+            {
+                path:"purchase/:id",
+                element: <Purchase></Purchase>,
                 loader: ({params}) => fetch(`http://localhost:5000/addfood/${params.id}`)
             },
             {

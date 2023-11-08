@@ -1,5 +1,5 @@
 
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const SingleFood = () => {
@@ -7,10 +7,11 @@ const SingleFood = () => {
     
 
     const singleFoods = useLoaderData()
-    const  {username,foodname, category, image, price, description, country }= singleFoods || { }
+    const  { _id, username,foodname, category, image, price, description, country }= singleFoods || { }
 
+    const navigate = useNavigate()
     const hanldeOrder = () =>{
-        
+        navigate( `/purchase/${_id}`)
     }
   
 
