@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const FoodItem = ({foodItem}) => {
-    // console.log(foodItem)
-
-    const { id,  foodname, category, quantity, image, price } = foodItem ||{ }
 
 
+    const { _id,  foodname, category, quantity, image, price } = foodItem ||{ }
+
+    // const navigate = useNavigate()
+
+    // const handleDetails = () =>{
+    //     navigate(`/singlefood/${_id}`)
+    // }
     return (
         <div className=' flex  '>
             <a href="#" className="group relative block overflow-hidden">
@@ -57,11 +63,16 @@ const FoodItem = ({foodItem}) => {
              
 
                 <form className="mt-4">
-                <button
+                    <Link to={`/singlefood/${_id}`}>
+                    <button
+                    // onClick={handleDetails}
                     className="block w-full rounded bg-red-400 p-4 text-white text-sm font-medium transition hover:scale-105"
                 >
                    Details
                 </button>
+                        
+                 </Link>
+                
                 </form>
             </div>
             </a>

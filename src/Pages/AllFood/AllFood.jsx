@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import FoodItem from "./FoodItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const AllFood = () => {
@@ -25,6 +25,45 @@ const AllFood = () => {
 
 
     }
+
+    let minValue; 
+    let maxValue ; 
+
+    // console.log(minValue)
+    // console.log(maxValue)
+
+    const handleprice = (minValue, maxValue) =>{
+
+        
+        setfooditemlist(foodlist.filter(foodItem => {
+            const prices = foodItem.price
+            const pricesInt = parseInt(prices)
+           
+            if(pricesInt>minValue && pricesInt<maxValue){
+                return pricesInt
+            }
+
+        }))
+
+    }
+    const handleHightPrice  = maxValue =>{
+
+        setfooditemlist(foodlist.filter(foodItem => {
+            const prices = foodItem.price
+            const pricesInt = parseInt(prices)
+           
+            if( pricesInt>maxValue){
+                return pricesInt
+                
+            }
+
+        }))
+        
+    }
+
+    // pagination
+   
+
 
 
 
@@ -61,6 +100,36 @@ const AllFood = () => {
                 </div>
 
               </div>
+              {/* price filter */}
+              <div className="pt-10">
+              <h1 className="font-bold text-xl">price</h1>
+
+                <div className="flex justify-start items-center py-3  " >
+                <input type="radio" name="radio-8" className="radio radio-error"   onClick={ () =>setfooditemlist(foodlist)}/>
+                <h1 className=" text-xl pl-3">All</h1>
+                </div>
+                {/* second category */}
+                <div className="flex justify-start items-center py-3 " >
+                <input type="radio" name="radio-8" className="radio radio-error" onClick={ () =>handleprice(minValue=0, maxValue=15 )} />
+                <h1 className=" text-[16] pl-3">$0 - $15</h1>
+                </div>
+                {/* third */}
+                <div className="flex justify-start items-center py-3 "    >
+                <input type="radio" name="radio-8" className="radio radio-error"   onClick={ () =>handleprice(minValue=15, maxValue=25 )} />
+                <h1 className=" text-[16] pl-3">$15 - $25</h1>
+                </div>
+                {/* forth */}
+                <div className="flex justify-start items-center py-3 " >
+                <input type="radio" name="radio-8" className="radio radio-error"  onClick={ () =>handleprice(minValue=25, maxValue=40 )}  />
+                <h1 className=" text-[16] pl-3">$25 - 40$</h1>
+                </div>
+                {/* fifth */}
+                <div className="flex justify-start items-center py-3 "  >
+                <input type="radio" name="radio-8" className="radio radio-error"  onClick={ () =>handleHightPrice( maxValue=40 )}/>
+                <h1 className=" text-[16] pl-3">over $40</h1>
+                </div>
+
+              </div>
                 
 
             </div>
@@ -77,6 +146,10 @@ const AllFood = () => {
                 </div>
        
             </div>
+            
+            {/* pagination */}
+
+       
             
         </div>
     );
