@@ -9,6 +9,9 @@ const SingleFood = () => {
     const singleFoods = useLoaderData()
     const  {username,foodname, category, image, price, description, country }= singleFoods || { }
 
+    const hanldeOrder = () =>{
+        
+    }
   
 
     return (
@@ -53,7 +56,7 @@ const SingleFood = () => {
                 <button className="btn bg-[#ec7625] 
                 rounded-tl-3xl rounded-tr-none rounded-bl-none rounded-br-3xl
                 px-8  text-white hover:text-[#ec7625] " 
-              
+                onClick={hanldeOrder}
                 >Order Now </button>
                 </div>
 
@@ -63,6 +66,21 @@ const SingleFood = () => {
             <div >
                 <h1 className="text-3xl font-bold pt-6 pb-2">Review</h1>
                 <div className="divider -mt-2"></div> 
+
+               <div className="flex gap-8">
+               <div className="w-2/5">
+                <h1 className="text-xl font-bold pb-3">Comments</h1>
+                <div>
+                <textarea placeholder="write you review... " className="textarea textarea-bordered textarea-lg w-full max-w-md" ></textarea>
+                
+
+
+                </div>
+                </div>
+                <div className="w-4/5">
+                    dddddd
+                </div>
+               </div>
 
 
             </div>
