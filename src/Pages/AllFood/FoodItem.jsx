@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const FoodItem = ({foodItem}) => {
-    console.log(foodItem)
+    // console.log(foodItem)
 
     const { id,  foodname, category, quantity, image, price } = foodItem ||{ }
 
