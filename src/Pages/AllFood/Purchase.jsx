@@ -18,7 +18,8 @@ const Purchase = () => {
         e.preventDefault()
         const form = e.target
 
-        const userNeedquantity = form.userquantity.value
+        const userNeedquantity = form.userquantity.value;
+      const  productQuantity = parseInt(quantity)
         const date = form.date.value;
         const userName = user?.displayName
         const userEmail = user?.email
@@ -34,7 +35,7 @@ const Purchase = () => {
                 autoClose:2000,
             })
             return
-        }else if( quantity < userNeedquantity ){
+        }else if( productQuantity<userNeedquantity ){
             toast.warning("you can't buy food!",{
                 position:"top-right",
                 autoClose:2000,
@@ -47,35 +48,37 @@ const Purchase = () => {
             })
             return
         }
+
         console.log(purchasedate)
 
 
-        // fetch('http://localhost:5000/addfood', {
-        //     method:"POST",
-        //     headers:{
-        //       'content-type':'application/json'
-        //     },
-        //     body: JSON.stringify(foodItemList)
-        //   })
-        //   .then(res=>res.json())
-        //   .then(data => {
-        //     console.log(data)
-        //     if(data.insertedId){
-        //         Swal.fire({
-        //             title: 'Success!',
-        //             text: ' Food purchase successfully ',
-        //             icon: 'success',
-        //             confirmButtonText: 'OK'
-        //           })
-        //       form.reset()
-        //     }
-        //   })
+        fetch('http://localhost:5000/purchase', {
+            method:"POST",
+            headers:{
+              'content-type':'application/json'
+            },
+            body: JSON.stringify(purchasedate)
+          })
+          .then(res=>res.json())
+          .then(data => {
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: ' Food purchase successfully ',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  })
+              form.reset()
+            }
+          })
 
     }
 
   
     return (
         <div className="px-4 lg:px-12 lg:py-10 min-h-screen ">
+              <h1 className="text-2xl font-bold text-center">Purchase info </h1>
             <form onSubmit={handlePurchase} className="mt-8 space-y-3 md:space-y-6 lg:w-2/5 mx-auto ">
                     <div>
                             <label htmlFor="HeadlineAct" className="block text-sm font-medium text-gray-900">
@@ -169,6 +172,7 @@ const Purchase = () => {
                         type="text"
                         id="Name"
                         name="userquantity"
+                        required
                         className="mt-1 lg:w-full  rounded-md  bg-white text-sm text-gray-700  p-2  border border-red-400  shadow-md"
                         />
                     </div>
@@ -185,6 +189,7 @@ const Purchase = () => {
                         type="date"
                         id="date"
                         name="date"
+                        required
                         className="mt-1 lg:w-full rounded-md  p-2  border border-red-400  shadow-md bg-white text-sm text-gray-700 "
                         />
                     </div>

@@ -118,7 +118,7 @@ const Navbar = () => {
                         </label>
                         <li className="text-center pb-2">{user.displayName}</li>
                          
-                        <li> <Link to={'/'}  >My added food</Link></li>
+                        <li> <Link to={'/myaddedfood'}  >My added food</Link></li>
                          <li>  <Link to={'/addfood'}> Add a food</Link> </li>
                          <li>  <Link to={'/'}> My ordered food </Link> </li>
                            
