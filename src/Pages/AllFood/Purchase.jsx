@@ -12,7 +12,7 @@ const Purchase = () => {
 
     const {user} = useContext(AuthContext)
 
-    const  { foodname,  price, quantity, useremail }= purchaseInfo || { }
+    const  {  foodname,  price, quantity, useremail }= purchaseInfo || { }
 
     const handlePurchase = (e) =>{
         e.preventDefault()
@@ -26,7 +26,7 @@ const Purchase = () => {
 
         
 
-        const purchasedate ={foodname, price, userNeedquantity,userName, userEmail, date    }
+        const purchasedate ={foodname, price, userNeedquantity,userName, userEmail, date, count:0  }
        
 
         if(quantity === 0){
@@ -72,6 +72,8 @@ const Purchase = () => {
               form.reset()
             }
           })
+
+
 
     }
 
@@ -196,6 +198,7 @@ const Purchase = () => {
                     <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                     
                         <button
+                        
                         className="inline-block shrink-0 rounded-md lg:w-full  bg-red-400 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-red-500 hover:border-none hover:bg-white hover:shadow-lg focus:outline-none focus:ring active:text-blue-500"
                         >
                             purchase

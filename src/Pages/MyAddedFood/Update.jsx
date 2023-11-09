@@ -21,8 +21,8 @@ const Update = () => {
         const description = form.description.value
         const country  = form.origin.value
 
-        const updateFoodInfo = { foodname, category, quantity, image, price, description, country, count:0 }
-        console.log(updateFoodInfo)
+        const updateFoodInfo = { foodname, category, quantity, image, price, description, country }
+       
 
         fetch(`http://localhost:5000/addfood/${_id}`, {
             method:"PUT",
@@ -34,10 +34,10 @@ const Update = () => {
           .then(res=>res.json())
           .then(data => {
             console.log(data)
-            if(data.insertedId){
+            if(data.modifiedCount>0){
                 Swal.fire({
                     title: 'Success!',
-                    text: ' Food Added successfully ',
+                    text: ' Updated successfully ',
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })

@@ -12,6 +12,7 @@ import Purchase from "../AllFood/Purchase";
 import PrivateRoute from "./PrivateRoute";
 import MyAddedFood from "../MyAddedFood/MyAddedFood";
 import Update from "../MyAddedFood/Update";
+import MyOrder from "../MyAddedFood/MyOrder";
 
 
 const MyRoute = createBrowserRouter([
@@ -38,6 +39,10 @@ const MyRoute = createBrowserRouter([
                 path:"purchase/:id",
                 element: <PrivateRoute> <Purchase></Purchase> </PrivateRoute> ,
                 loader: ({params}) => fetch(`http://localhost:5000/addfood/${params.id}`)
+            },
+            {
+                path:"myorder",
+                element: <MyOrder></MyOrder>
             },
             {
                 path:"myaddedfood",
