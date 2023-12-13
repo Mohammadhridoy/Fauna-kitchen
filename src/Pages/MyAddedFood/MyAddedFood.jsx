@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const MyAddedFood = () => {
 
     const {user} = useContext(AuthContext)
-    console.log(user.email)
+    
 
     const [myadditems, setMyadditems] = useState([])
 
@@ -20,7 +20,7 @@ const MyAddedFood = () => {
 
     const addedInfos = myadditems.filter(myadditem => myadditem.useremail === user.email)
 
-    console.log(addedInfos)
+
 
     const navigate = useNavigate()
 

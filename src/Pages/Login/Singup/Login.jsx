@@ -7,7 +7,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { AiOutlineGoogle  } from 'react-icons/ai';
 import { DiGithubBadge  } from 'react-icons/di';
 import 'react-toastify/dist/ReactToastify.css';
-
+import axios from "axios";
 
 const Login = () => {
 
@@ -28,6 +28,14 @@ const Login = () => {
         singInUser(email,password)
         .then(result =>{
             console.log(result.user)
+            const user ={email}
+            axios.post('http://localhost:5000/jwt', user,{withCredentials: true})
+            .then(res =>{
+                console.log(res.data)
+                if(res.data.success){
+                    navigate(location?.state ? location.state : "/")
+                }
+            })
             
 
             navigate(location?.state ? location.state : "/")

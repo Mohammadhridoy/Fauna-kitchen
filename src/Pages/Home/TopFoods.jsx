@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 
 const TopFoods = ({topfoods}) => {
-    console.log(topfoods)
+  
     const {   foodname, category, quantity, image, price } = topfoods ||{ }
     return (
         <div>
-            <div className=' flex w-96 '>
+            <div className=' flex w-72 lg:w-96 '>
             <a href="#" className="group relative block overflow-hidden">
             <button
                 className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"

@@ -62,14 +62,48 @@ const AllFood = () => {
     }
 
     // pagination
-   
 
+    const [count, setCounts]  = useState(null)
+
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/foodItemsCount')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         setCounts(data)
+    //     })
+    // },[])
+
+    // const counts = count.count
+    const counts = 36; 
+    console.log(counts)
+    const [currentPage, setCurrentPage] = useState(0)
+    const [itemsPerPage, setitemsPerpage] = useState(10)
+    // const itemsPerPage =10
+   
+    const numberofPages = Math.ceil(counts/itemsPerPage)
+
+    const pages = [...Array(numberofPages).keys()]
+   
+    const handleitem = e =>{
+        
+        const val = parseInt(e.target.value)
+        setitemsPerpage(val)
+        setCurrentPage(0)
+        
+    }
+    // useEffect(()=>{
+    //     fetch( `http://localhost:5000//addfood?page=${currentPage}&size=${itemsPerPage}`)
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
+    // },[currentPage, itemsPerPage])
 
 
 
     return (
-        <div className="px-4 lg:px-12 lg:py-6 flex  ">
+        <div >
             {/* sidebar */}
+            <div className="px-4 lg:px-12 lg:py-6 flex  ">
             <div className="w-1/4 min-h-screen ">
               <div className="pt-20">
               <h1 className="font-bold text-xl">  Category</h1>
@@ -140,14 +174,35 @@ const AllFood = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-6 pt-6 ">
                 {
-                 foodItemslist.map(foodItem => <FoodItem key={foodItem._id} foodItem={foodItem}></FoodItem> ) 
+                 foodItemslist?.map(foodItem => <FoodItem key={foodItem._id} foodItem={foodItem}></FoodItem> ) 
                     
                 }
                 </div>
        
             </div>
+            </div>
             
             {/* pagination */}
+            <div className="w-full mx-auto">
+               
+            {
+                pages?.map(page => <button
+                     
+                    className={ currentPage === page ? 'bg-red-400 ': undefined} 
+                    onClick={() => setCurrentPage(page)}
+                    key={page}> <span className="p-3 bg-gray-400 m-2">{page} </span> </button>)
+            }
+           
+            
+                <select value={itemsPerPage} className="bg-gray-400 p-2 m-2" onChange={handleitem}  name=" " id="" >
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            
+            </div>
+
 
        
             

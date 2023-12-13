@@ -17,7 +17,7 @@ const Banner = () => {
             <div className="hero ">
             <div className="hero-content flex-col-reverse md:flex-row-reverse md:gap-60 lg:gap-[590px] relative ">
                 <div className='md:-mr-20 lg:-mr-28'>
-                <img src={herobg} className=" max-w-sm lg:max-w-md rounded-lg hidden md:flex lg:flex  md:h-[450px] lg:h-[550px] " />
+                <img src={herobg} className=" max-w-sm lg:max-w-md rounded-lg hidden md:flex lg:flex  md:h-[400px] lg:h-[550px] " />
                 <div className=' md:absolute md:top-9 lg:top-16 md:-right-20 lg:right-0 flex items-center justify-center md:gap-11 gap-16 lg:gap-16 md:pl-40  lg:pl-[600px] py-20 md:py-4 flex-wrap flex-row '>
                     <div className='min-w-[190px] p-2  cardOverlay  backdrop-blur-md rounded-3xl  drop-shadow-2xl '>
                         <img className='w-40 -mt-20'  src={banner1} alt="" />

@@ -12,7 +12,7 @@ const TopSellingFood = () => {
         .then(data => setTopSell(data))
     },[])
 
-    console.log(topSellFoods)
+ 
 
     // const  topSellFood.sort()
 
@@ -20,9 +20,9 @@ const TopSellingFood = () => {
 
     return (
         <div className="px-4 lg:px-12 lg:py-6 min-h-screen"> 
-        <h1 className="py-6 font-bold text-2xl text-center">Top sellling food items</h1>
+        <h1 className="py-6 font-bold text-2xl text-center">Top selling food items</h1>
 
-        <div className="grid ml-12 md:ml-0 md:grid-cols-2 lg:grid-cols-4 lg:gap-10 ">
+        <div className="grid ml-12 md:ml-10 lg:ml-0 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-10 ">
         {
             topSellFoods?.map((topSellFood) =><TopFoods key={topSellFood._id} topfoods={topSellFood}></TopFoods>)
         }

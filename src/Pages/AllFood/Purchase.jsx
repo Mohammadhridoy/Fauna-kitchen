@@ -12,7 +12,7 @@ const Purchase = () => {
 
     const {user} = useContext(AuthContext)
 
-    const  {  foodname,  price, quantity, useremail }= purchaseInfo || { }
+    const  {  foodname,  price, quantity, useremail, image }= purchaseInfo || { }
 
     const handlePurchase = (e) =>{
         e.preventDefault()
@@ -26,7 +26,7 @@ const Purchase = () => {
 
         
 
-        const purchasedate ={foodname, price, userNeedquantity,userName, userEmail, date, count:0  }
+        const purchasedate ={foodname, price, userNeedquantity,userName, image, userEmail, date, count:0  }
        
 
         if(quantity === 0){
